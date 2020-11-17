@@ -27,17 +27,15 @@ public class ListaApp {
             lista.insereInicio(47);
             lista.insereInicio(67);
             lista.insereInicio(71);
-            lista.insereInicio(83);
             
-            lista.mostrarLista();
             lista.ordenarLista();
             lista.mostrarLista();
 
             lista.inserirComVerificacao(47);
             lista.mostrarLista();
-            lista.inserirComVerificacao(51);
-            lista.mostrarLista();
-            lista.inserirComVerificacao(51);
+//            lista.inserirComVerificacao(51);
+//            lista.mostrarLista();
+//            lista.inserirComVerificacao(51);
 
         } catch (RuntimeException erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());

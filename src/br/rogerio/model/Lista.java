@@ -7,8 +7,6 @@ inserido.
  */
 package br.rogerio.model;
 
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author roger
@@ -195,11 +193,15 @@ public class Lista {
         if (isFull()) {
             throw new RuntimeException("A lista está cheia");
         }
+        
         int posicao = BuscaBinaria(elemento);
-        ultimo++;
         
-        array[posicao] = elemento;
+        if (posicao == -1) {
+            throw new RuntimeException("O elemento já existe");
+        }
         
+        inserePosicao(posicao, elemento);
+
         System.out.println("Posição vazia da lista: " + posicao);
 
     }
@@ -207,10 +209,10 @@ public class Lista {
     public int BuscaBinaria(int numero) {
 
         int inicio = 0;
-        int fim = ultimo;
+        int fim = ultimo + 1;
         int meio = (inicio + fim) / 2;
         boolean localizador = false;
-        while (inicio < fim && localizador == false) {
+        while (inicio <= fim && localizador == false) {
             if (array[meio] == numero) {
                 localizador = true;
             } else {
@@ -222,16 +224,13 @@ public class Lista {
                 meio = (inicio + fim) / 2;
             }
         }
+        System.out.println(localizador);
+        System.out.println(inicio);
+
         meio = (inicio + fim) / 2;
         if (localizador) {
-            System.out.println("O número: " + numero + " já existe.");
-        } else {
-            for (int i = 0; i < array.length; i++) {
-                if (array[i] == 0) {
-                    return i;
-                }
-            }
+            return -1;
         }
-        return -1;
+        return inicio;
     }
 }
